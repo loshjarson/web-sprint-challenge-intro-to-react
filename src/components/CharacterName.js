@@ -1,3 +1,6 @@
+import React from 'react';
+import styled from "styled-components";
+
 const CharacterName = props => {
     const {name, setFocusedCharacter, characters} = props;
     
@@ -8,9 +11,12 @@ const CharacterName = props => {
             }
         })
     }
+    const Name = styled.p`
+        font-family: 'Aurebesh_english';
+    `
     return(
         <div>
-            <p onClick={e=>handleClick(e)}>{name}</p>
+            <Name onClick={e=>handleClick(e)}>{name}</Name>
         </div>
     )
 }

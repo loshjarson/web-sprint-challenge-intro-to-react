@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios'
 import Character from './components/Character'
 import './App.css';
+import { createGlobalStyle } from 'styled-components';
+import AurebeshTTF from './font/Aurebesh_english-Regular.ttf'
 
 const App = () => {
   const [characters, setCharacters] = useState([]);
@@ -28,9 +30,18 @@ const App = () => {
     .catch(err => console.log('Error getting character list: ', err))
   }, [])
   
+  const GlobalStyle = createGlobalStyle`
+    @font-face {
+      font-family: 'Aurebesh_english';
+      src: url('${AurebeshTTF}');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }`
 
   return (
     <div className="App">
+      <GlobalStyle/>
       <h1 className="Header">Characters</h1>
       <Character characters={characters} focusedCharacter={focusedCharacter} setFocusedCharacter={setFocusedCharacter} names={names}/>
     </div>
